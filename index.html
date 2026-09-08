@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="webstyle.css">
+    <title>Hidden text to fool ai generator</title>
+  </head>
+  <body>
+    <div id="main">
+      <section id="form">
+        <form id="textToBeGenerated">
+          <label for="mainText">Main text: </label>
+          
+          <textarea id="mainText" rows="4" cols="50"></textarea>
+
+          <label for="poisionText">Poision text: </label>
+          
+          <textarea id="poisionText" rows="4" cols="50"></textarea>
+
+          <label for="mainTextSize">Main text size: </label>
+          <input type="number" id="mainTextSize" value="34" min="34" max="90" />
+
+          <label for="poisionTextSize">Poision text size: </label>
+          <input type="number" id="poisionTextSize" value="12" min="12" max="90"  />
+
+          <label for="mainTextColor">Main text color: </label>
+          <input type="color" id="mainTextColor" value=#000000 />
+
+          <label for="poisionTextColor">Poision text color: </label>
+          <input type="color" id="poisionTextColor" value="#ffffff" />
+
+          <label for="switch">Top is poision </label>
+          <input type="checkbox" id="switch" name="switch"/>
+
+          <label for="sampling">preview only </label>
+          <input type="checkbox" id="sampling" name="sampling" checked/>
+
+
+
+          <button type="submit">Generate</button>
+        </form>
+        
+          
+      </section> 
+      <h1>Sample text:</h1> 
+      <section id="resultArea" class="resultArea" onmouseover="mouseOver()" onmouseout="mouseOut()">
+        <p class="text-behind" id="text-behind"></p> 
+        <p class="text-front" id="text-front" ></p>
+      </section>   
+      
+    </div>
+    <script type="module" src="draw.js"></script>
+  </body>
+</html>
