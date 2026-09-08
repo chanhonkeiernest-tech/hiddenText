@@ -20,7 +20,7 @@ window.mouseOut = mouseOut;
 
 
 
-async function drawAndSave(front, back, main, poision, frontColor, backColor) {
+async function drawAndSave(front, back, main, poison, frontColor, backColor) {
     // 1. Load the background image from a local path or URL
     // For this example, ensure 'input.jpg' exists in your directory
     //const imagePath = path.join(__dirname, 'sketch1788568637022.png'); 
@@ -55,7 +55,7 @@ async function drawAndSave(front, back, main, poision, frontColor, backColor) {
     const lineHeight = 50;
     let y = 100+offsetBack;
 
-    for (const paragraph of poision.split('\n')) {
+    for (const paragraph of poison.split('\n')) {
         if (paragraph.trim() === '') {
             y += lineHeight;
             continue;
@@ -171,53 +171,53 @@ const textForm = document.getElementById("textToBeGenerated");
 textForm.addEventListener("submit", async (event) => {
   event.preventDefault();
   const main = document.getElementById("mainText").value.trim();
-  const poision = document.getElementById("poisionText").value.trim();
+  const poison = document.getElementById("poisonText").value.trim();
   const mainSize = document.getElementById("mainTextSize").value;
-  const poisionSize = document.getElementById("poisionTextSize").value;
+  const poisonSize = document.getElementById("poisonTextSize").value;
   const mainColor = document.getElementById("mainTextColor").value;
-  const poisionColor = document.getElementById("poisionTextColor").value;
+  const poisonColor = document.getElementById("poisonTextColor").value;
   const switching = document.getElementById("switch").checked;
   const sampling = document.getElementById("sampling").checked;
-//   let offsetBottom = mainSize>poisionSize ? (mainSize)/16 : 0;
-//   let  offsetTop = mainSize<poisionSize ? (poisionSize)/16 : 0;
+//   let offsetBottom = mainSize>poisonSize ? (mainSize)/16 : 0;
+//   let  offsetTop = mainSize<poisonSize ? (poisonSize)/16 : 0;
   let offsetTop = 0;
   let offsetBottom = 0;
-  if( mainColor!== poisionColor){
-    if(mainSize===poisionSize){
+  if( mainColor!== poisonColor){
+    if(mainSize===poisonSize){
         document.getElementById("text-behind").style.lineHeight = 1;
         document.getElementById("text-front").style.lineHeight = 1;
-    }else if(mainSize>poisionSize){
-        document.getElementById("text-behind").style.lineHeight = mainSize/poisionSize;
+    }else if(mainSize>poisonSize){
+        document.getElementById("text-behind").style.lineHeight = mainSize/poisonSize;
         document.getElementById("text-front").style.lineHeight = 1;
     }else{
         document.getElementById("text-behind").style.lineHeight = 1;
-        document.getElementById("text-front").style.lineHeight = poisionSize/mainSize;
+        document.getElementById("text-front").style.lineHeight = poisonSize/mainSize;
     }
     const display = document.getElementById("resultArea");
     console.log(offsetTop);
     console.log(offsetBottom);
-    document.getElementById("text-behind").style.fontSize=poisionSize + "px";
+    document.getElementById("text-behind").style.fontSize=poisonSize + "px";
     document.getElementById("text-behind").style.top=offsetBottom + "rem";
-    document.getElementById("text-behind").style.color=poisionColor;
-    document.getElementById("text-behind").innerHTML=poision;
+    document.getElementById("text-behind").style.color=poisonColor;
+    document.getElementById("text-behind").innerHTML=poison;
     document.getElementById("text-front").style.fontSize=mainSize + "px";
     document.getElementById("text-front").style.top=offsetTop + "rem";
     document.getElementById("text-front").style.color=mainColor;
     document.getElementById("text-front").innerHTML=main;
 
-    //document.getElementById("resultArea").style.color=poisionColor;
+    //document.getElementById("resultArea").style.color=poisonColor;
 
-    if(poisionColor===overColor||mainColor===overColor){
+    if(poisonColor===overColor||mainColor===overColor){
         overColor='#00ccff';
     }
-    if(poisionColor===overColor||mainColor===overColor){
+    if(poisonColor===overColor||mainColor===overColor){
         overColor='#ff0000';
     }
-    if(poisionColor===overColor||mainColor===overColor){
+    if(poisonColor===overColor||mainColor===overColor){
         overColor='#bbff00';
     }
     outColorTop=mainColor;
-    outColorBottom=poisionColor;
+    outColorBottom=poisonColor;
     if(switching){
         outColor=outColorTop;
     
@@ -227,9 +227,9 @@ textForm.addEventListener("submit", async (event) => {
     }
     document.getElementById("resultArea").style.backgroundColor=outColor;
 
-    //display.innerHTML=`<p class="text-behind" style="font-size:`+ poisionSize+`; top: `+poisionSize+`;">`+posion +`</p> <p class="text-front"  style="font-size:`+ mainSize+`;">` +main+`</p>`;
+    //display.innerHTML=`<p class="text-behind" style="font-size:`+ poisonSize+`; top: `+poisonSize+`;">`+posion +`</p> <p class="text-front"  style="font-size:`+ mainSize+`;">` +main+`</p>`;
         try {
-            if(!sampling)await drawAndSave(mainSize, poisionSize, main, poision, mainColor, poisionColor);
+            if(!sampling)await drawAndSave(mainSize, poisonSize, main, poison, mainColor, poisonColor);
         } catch (error) {
             console.error('Unable to create output.png:', error);
         }
