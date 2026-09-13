@@ -58,19 +58,22 @@ form button:hover {
 
 
 
-.text-behind {
+#text-behind {
   text-align: left;
   position: absolute;
   
   left: 0;
-  line-height:2.83;
+  
   color: red;
   z-index: 1;         /* Lower number goes behind */
   margin-top: 0;
-  
+  transition: color 120ms ease, text-shadow 120ms ease;
+  user-select: text;
 }
 
-.text-front {
+
+
+#text-front {
   text-align: left;
   position: absolute;
         /* Offset slightly to create the overlap */
@@ -80,7 +83,11 @@ form button:hover {
   z-index: 2;         /* Higher number comes forward */
   background-color: transparent;
   margin-top: 0;
+  transition: color 120ms ease, text-shadow 120ms ease;
+  user-select: text;
 }
+
+
 
 .resultArea{
   position: relative;
@@ -89,6 +96,10 @@ form button:hover {
   
   
 }
+
+
+
+
 
 
 

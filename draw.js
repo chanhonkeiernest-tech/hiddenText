@@ -8,6 +8,8 @@ let outColorBottom = '#ffffff';
 
 let outColor = outColorBottom;
 
+let replaceRule = {};
+
 function mouseOver() {
   document.getElementById("resultArea").style.backgroundColor = overColor;
 }
@@ -17,6 +19,39 @@ function mouseOut() {
 }
 window.mouseOver = mouseOver;
 window.mouseOut = mouseOut;
+
+document.addEventListener('selectionchange', () => {
+    const resultArea = document.getElementById('resultArea');
+    const selection = window.getSelection();
+    const hasSelection = selection && !selection.isCollapsed &&
+        resultArea.contains(selection.anchorNode) &&
+        resultArea.contains(selection.focusNode);
+
+    resultArea.classList.toggle('selection-active', hasSelection);
+});
+
+document.addEventListener('copy', (event) => {
+    const resultArea = document.getElementById('resultArea');
+    const selection = window.getSelection();
+    const hasResultSelection = selection && !selection.isCollapsed &&
+        resultArea.contains(selection.anchorNode) &&
+        resultArea.contains(selection.focusNode);
+
+    if (!hasResultSelection) return;
+
+    event.preventDefault();
+    let resultText = selection.toString;
+
+    
+    const paragraphs = [
+        selection.toString(),
+        document.getElementById('text-behind').innerText
+    ];
+    event.clipboardData.setData(
+        'text/plain',
+        paragraphs.join('')
+    );
+});
 
 
 
@@ -172,12 +207,15 @@ textForm.addEventListener("submit", async (event) => {
   event.preventDefault();
   const main = document.getElementById("mainText").value.trim();
   const poison = document.getElementById("poisonText").value.trim();
+  const replace = document.getElementById("replaceText").value.trim();
   const mainSize = document.getElementById("mainTextSize").value;
   const poisonSize = document.getElementById("poisonTextSize").value;
   const mainColor = document.getElementById("mainTextColor").value;
   const poisonColor = document.getElementById("poisonTextColor").value;
   const switching = document.getElementById("switch").checked;
   const sampling = document.getElementById("sampling").checked;
+
+  
 //   let offsetBottom = mainSize>poisonSize ? (mainSize)/16 : 0;
 //   let  offsetTop = mainSize<poisonSize ? (poisonSize)/16 : 0;
   let offsetTop = 0;
@@ -194,8 +232,7 @@ textForm.addEventListener("submit", async (event) => {
         document.getElementById("text-front").style.lineHeight = poisonSize/mainSize;
     }
     const display = document.getElementById("resultArea");
-    console.log(offsetTop);
-    console.log(offsetBottom);
+    
     document.getElementById("text-behind").style.fontSize=poisonSize + "px";
     document.getElementById("text-behind").style.top=offsetBottom + "rem";
     document.getElementById("text-behind").style.color=poisonColor;
@@ -233,6 +270,7 @@ textForm.addEventListener("submit", async (event) => {
         } catch (error) {
             console.error('Unable to create output.png:', error);
         }
+    replaceRule = replace;
   }else{
     const output = `<p> Creation fail! The posion text has to be shorter or same length as the main text. Posion text size has to be either smaller or same size as main</p>`
     const display = document.getElementById("resultArea");

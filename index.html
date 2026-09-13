@@ -15,21 +15,27 @@
           
           <textarea id="mainText" rows="4" cols="50"></textarea>
 
-          <label for="poisionText">Poision text: </label>
+          <label for="poisonText">Poison text: </label>
           
-          <textarea id="poisionText" rows="4" cols="50"></textarea>
+          <textarea id="poisonText" rows="4" cols="50"></textarea>
+
+
+           <label for="replaceText">Replace text: </label>
+          
+          <textarea id="replaceText" rows="4" cols="50"></textarea>
+
 
           <label for="mainTextSize">Main text size: </label>
           <input type="number" id="mainTextSize" value="34" min="34" max="90" />
 
-          <label for="poisionTextSize">Poision text size: </label>
-          <input type="number" id="poisionTextSize" value="12" min="12" max="90"  />
+          <label for="poisonTextSize">Poison text size: </label>
+          <input type="number" id="poisonTextSize" value="12" min="12" max="90"  />
 
           <label for="mainTextColor">Main text color: </label>
           <input type="color" id="mainTextColor" value=#000000 />
 
-          <label for="poisionTextColor">Poision text color: </label>
-          <input type="color" id="poisionTextColor" value="#ffffff" />
+          <label for="poisonTextColor">Poison text color: </label>
+          <input type="color" id="poisonTextColor" value="#ffffff" />
 
           <label for="switch">Top is poision </label>
           <input type="checkbox" id="switch" name="switch"/>
@@ -46,11 +52,41 @@
       </section> 
       <h1>Sample text:</h1> 
       <section id="resultArea" class="resultArea" onmouseover="mouseOver()" onmouseout="mouseOut()">
-        <p class="text-behind" id="text-behind"></p> 
-        <p class="text-front" id="text-front" ></p>
+         <p class="sync" id="text-front"></p> 
+        <p class="sync" id="text-behind"></p> 
+       
+
+           
       </section>   
       
     </div>
-    <script type="module" src="draw.js"></script>
+    <script type="module" src="draw.js">
+      const paras = document.querySelectorAll('.sync');
+
+        // 1. VISUAL HIGHLIGHT: Add custom class on mouse down or text selection
+       document.addEventListener('selectionchange', () => {
+            const selection = window.getSelection();
+            const selectedText = selection.toString().trim();
+
+            if (selectedText.length > 0) {
+                // Check if the selection started inside one of our target paragraphs
+                const anchorParent = selection.anchorNode.parentElement;
+                
+                if (anchorParent && anchorParent.classList.contains('sync-text')) {
+                    // Highlight both paragraphs visually
+                    paras.forEach(p => p.classList.add('sync-highlight'));
+                    return;
+                }
+            }
+            
+            // Remove highlight if selection is cleared or outside target paragraphs
+            paras.forEach(p => p.classList.remove('sync-highlight'));
+        });
+
+       
+        
+        
+
+    </script>
   </body>
 </html>
