@@ -4,7 +4,8 @@
 
 ## KeyTerms
 Poison text: Acts as an poison to prompt or training to cause it to misunderstand the overall information.
-Legit text: It is the text that you created and wish to be protected from these actions.
+Main text: It is the text that you created and wish to be protected from these actions.
+Replace text: Written in json/ object format to indicate the text to be replaced when being copy. 
 
 ## About
 To combat web crawling by AI and copy pasting to AI prompt action, I have developed this program to add poison text to add confusion. This can be use to protect work of text from being taken as training data.
@@ -20,6 +21,7 @@ Choose the color for both texts. By making the background the same as poison col
 You can switch the top text for being poison but its effects will not be ideal.
 Preview only allows you to view the copy paste preventive sample text.
 If preview only is uncheck a png image will be downloaded containing both texts.
+To change copy paste behavior, add a replace rule to replace certain group text.
 
 
 ### used:
