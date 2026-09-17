@@ -14,7 +14,7 @@ Instead of adding white text on some empty line, this program will put the poiso
 Note: For the copy and paste prevention work one will need the algorithm to generate the overlapping implement in the display. This is just a showcase.
 To use it immediately, one can choose to download the png image of the generated text and publish the image instead. When the suppose AI try to read the text from the image, it will either be unreadable or the overlapping cause it to read the poison text.
 
-##How to use
+## How to use
 Type the text you want to be protected onto the main text field and the poison text onto the poison fields.
 Choose the text size for the protected text and the text size for the poison. For deterring copy paste, having smaller poison text is ideal. When it comes to text recognition for a png image, poison text being to small might have a reverse affect of it not being read.
 Choose the color for both texts. By making the background the same as poison color with only reveal the legit text.
