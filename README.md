@@ -8,7 +8,7 @@ Main text: It is the text that you created and wish to be protected from these a
 Replace text: Written in json/ object format to indicate the text to be replaced when being copy. 
 
 ## About
-To combat web crawling by AI and copy pasting to AI prompt action, I have developed this program to add poison text to add confusion. This can be use to protect work of text from being taken as training data.
+To combat web crawling by AI or copy pasting to AI prompt, I have developed this program to add poison text to add confusion. This can be used to protect work of text from being taken as training data.
 The idea is inspired by Jason Gibson history professor at Alcorn State University in Mississippi adding white text into the test. The difference of this program is the text will be overlapped potentially making it harder to spot. 
 Instead of adding white text on some empty line, this program will put the poison text directly behind the legit text making it more difficult to spot during copy and pasting. By making the background color the same as the poison text, one can only see the legit text.
 Note: For the copy and paste prevention work one will need the algorithm to generate the overlapping implement in the display. This is just a showcase.
