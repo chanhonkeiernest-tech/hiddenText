@@ -8,7 +8,11 @@ let outColorBottom = '#ffffff';
 
 let outColor = outColorBottom;
 
-let replaceRule = {};
+let replaceRule = false;
+
+function replaceLiteral(text, key, replacement) {
+    return text.replaceAll(key, () => String(replacement));
+}
 
 function mouseOver() {
   document.getElementById("resultArea").style.backgroundColor = overColor;
@@ -20,15 +24,15 @@ function mouseOut() {
 window.mouseOver = mouseOver;
 window.mouseOut = mouseOut;
 
-document.addEventListener('selectionchange', () => {
-    const resultArea = document.getElementById('resultArea');
-    const selection = window.getSelection();
-    const hasSelection = selection && !selection.isCollapsed &&
-        resultArea.contains(selection.anchorNode) &&
-        resultArea.contains(selection.focusNode);
+// document.addEventListener('selectionchange', () => {
+//     const resultArea = document.getElementById('resultArea');
+//     const selection = window.getSelection();
+//     const hasSelection = selection && !selection.isCollapsed &&
+//         resultArea.contains(selection.anchorNode) &&
+//         resultArea.contains(selection.focusNode);
 
-    resultArea.classList.toggle('selection-active', hasSelection);
-});
+//     resultArea.classList.toggle('selection-active', hasSelection);
+// });
 
 document.addEventListener('copy', (event) => {
     const resultArea = document.getElementById('resultArea');
@@ -40,17 +44,33 @@ document.addEventListener('copy', (event) => {
     if (!hasResultSelection) return;
 
     event.preventDefault();
-    let resultText = selection.toString;
+    let resultText = selection.toString();
+    console.log(replaceRule);
+    if(replaceRule){
+        for (const key of Object.keys(replaceRule)) {
+            if (key !== '') {
+                resultText = replaceLiteral(resultText, key, replaceRule[key]);
+            }
+        }   
 
+        const paragraphs = resultText;
+        event.clipboardData.setData(
+            'text/plain',
+            paragraphs
+        );
+    }else{
+
+        const paragraphs = [
+            resultText,
+            document.getElementById('text-behind').innerText
+        ];
+        event.clipboardData.setData(
+            'text/plain',
+            paragraphs.join('')
+        );
+    }
     
-    const paragraphs = [
-        selection.toString(),
-        document.getElementById('text-behind').innerText
-    ];
-    event.clipboardData.setData(
-        'text/plain',
-        paragraphs.join('')
-    );
+    
 });
 
 
@@ -207,14 +227,19 @@ textForm.addEventListener("submit", async (event) => {
   event.preventDefault();
   const main = document.getElementById("mainText").value.trim();
   const poison = document.getElementById("poisonText").value.trim();
-  const replace = document.getElementById("replaceText").value.trim();
   const mainSize = document.getElementById("mainTextSize").value;
   const poisonSize = document.getElementById("poisonTextSize").value;
   const mainColor = document.getElementById("mainTextColor").value;
   const poisonColor = document.getElementById("poisonTextColor").value;
   const switching = document.getElementById("switch").checked;
   const sampling = document.getElementById("sampling").checked;
-
+   const textReplacment = document.getElementById("replaceText").value;
+    try{
+        replaceRule = JSON.parse(textReplacment);
+    }catch(error){
+        replaceRule = false;
+    }
+   
   
 //   let offsetBottom = mainSize>poisonSize ? (mainSize)/16 : 0;
 //   let  offsetTop = mainSize<poisonSize ? (poisonSize)/16 : 0;
@@ -236,11 +261,11 @@ textForm.addEventListener("submit", async (event) => {
     document.getElementById("text-behind").style.fontSize=poisonSize + "px";
     document.getElementById("text-behind").style.top=offsetBottom + "rem";
     document.getElementById("text-behind").style.color=poisonColor;
-    document.getElementById("text-behind").innerHTML=poison;
+    document.getElementById("text-behind").textContent=poison;
     document.getElementById("text-front").style.fontSize=mainSize + "px";
     document.getElementById("text-front").style.top=offsetTop + "rem";
     document.getElementById("text-front").style.color=mainColor;
-    document.getElementById("text-front").innerHTML=main;
+    document.getElementById("text-front").textContent=main;
 
     //document.getElementById("resultArea").style.color=poisonColor;
 
@@ -270,7 +295,6 @@ textForm.addEventListener("submit", async (event) => {
         } catch (error) {
             console.error('Unable to create output.png:', error);
         }
-    replaceRule = replace;
   }else{
     const output = `<p> Creation fail! The posion text has to be shorter or same length as the main text. Posion text size has to be either smaller or same size as main</p>`
     const display = document.getElementById("resultArea");
