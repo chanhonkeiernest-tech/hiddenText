@@ -40,6 +40,14 @@ form button {
   
 }
 
+label .instruction {
+  display: block;
+  margin-top: 4px;
+  color: #526078;
+  font-size: 0.85rem;
+  font-weight: normal;
+}
+
 form button {
   grid-column: 1 / -1;
   border: 0;

@@ -5,42 +5,62 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="webstyle.css">
-    <title>Hidden text to fool ai generator</title>
+    <title>Hidden text to fool ai generator　AIを誤魔化すためのテキスト生成器</title>
   </head>
   <body>
+    <h1>Hidden text to fool ai generator　AIを誤魔化すためのテキスト生成</h1>
     <div id="main">
       <section id="form">
         <form id="textToBeGenerated">
-          <label for="mainText">Main text: </label>
+          <label for="mainText">Main text メインテキスト: 
+             <small class="instruction">Entner the text that you wanted to be read</small>
+             <small class="instruction">皆に読めてほしいテクスト</small>
+          </label>
           
           <textarea id="mainText" rows="4" cols="50"></textarea>
 
-          <label for="poisonText">Poison text: </label>
+          <label for="poisonText">Poison text　毒のテキスト: 
+            <small class="instruction">Entner the text that you wanted the AI to read</small>
+            <small class="instruction">AIだけが読み取るテキスト</small>
+          </label>
           
           <textarea id="poisonText" rows="4" cols="50"></textarea>
 
 
-           <label for="replaceText">Replace text: </label>
+           <label for="replaceText">
+            Replace text　入れ替わるテキスト:
+            <small class="instruction">Enter a JSON object, for example: {"hi":"hello"} to replace specific text during copy and paste operation. If left empty, it will append the poison text instead</small>
+            <small class="instruction">コピーペーストで特定のテキストを別の特定のテキストに入れ替えるルール設定。jsonの方式で入力してください。なんも決めてない場合かわりに毒のテキストを使って、コピーするテキストの下に追加します</small>
+          </label>
           
           <textarea id="replaceText" rows="4" cols="50" placeholder='{"hi":"hello"}'></textarea>
 
 
-          <label for="mainTextSize">Main text size: </label>
+          <label for="mainTextSize">Main text size　メインのサイズ: </label>
           <input type="number" id="mainTextSize" value="34" min="34" max="90" />
 
-          <label for="poisonTextSize">Poison text size: </label>
+          <label for="poisonTextSize">Poison text size　毒のサイズ: </label>
           <input type="number" id="poisonTextSize" value="12" min="12" max="90"  />
 
-          <label for="mainTextColor">Main text color: </label>
+          <label for="mainTextColor">Main text color　メインの色: 
+            <small class="instruction">Font color for the main メインの字の色</small>
+          </label>
           <input type="color" id="mainTextColor" value=#000000 />
 
-          <label for="poisonTextColor">Poison text color: </label>
+          <label for="poisonTextColor">Poison text color　毒の色: 
+            <small class="instruction">Decide the poison color so you can hide it by setting the background color the same as it</small>
+            <small class="instruction">毒の字を決めて、表示する時、背景の色を同じすればメインだけが見えます</small>
+          </label>
+
           <input type="color" id="poisonTextColor" value="#ffffff" />
 
-          <label for="switch">Top is poision </label>
+          <label for="switch">Top is poision 上下転倒</label>
           <input type="checkbox" id="switch" name="switch"/>
 
-          <label for="sampling">preview only </label>
+          <label for="sampling">preview only 下見
+            <small class="instruction">By unchecking this it will generate a png image with your entered text within it</small>
+            <small class="instruction">pngイメージを生成しません</small>
+          </label>
           <input type="checkbox" id="sampling" name="sampling" checked/>
 
 
@@ -50,7 +70,7 @@
         
           
       </section> 
-      <h1>Sample text:</h1> 
+      <h1>Sample text　下見:</h1> 
       <section id="resultArea" class="resultArea" onmouseover="mouseOver()" onmouseout="mouseOut()">
          <p class="sync" id="text-front"></p> 
         <p class="sync" id="text-behind"></p> 
