@@ -39,7 +39,9 @@ form button {
   padding: 10px 12px;
   
 }
-
+h1{
+  text-align: center;
+}
 label .instruction {
   display: block;
   margin-top: 4px;
