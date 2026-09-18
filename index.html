@@ -1,14 +1,32 @@
+
+
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Hon Kei Ernest Chan">
+    <meta name="copyright" content="© 2026 Hon Kei Ernest Chan">
+    <meta name="email" content="chanhonkeiernest@gmail.com">
     <link rel="stylesheet" href="webstyle.css">
     <title>Hidden text to fool ai generator　AIを誤魔化すためのテキスト生成器</title>
   </head>
   <body>
     <h1>Hidden text to fool ai generator　AIを誤魔化すためのテキスト生成器</h1>
+    <h1> ©Hon Kei Ernest Chan  contact: chanhonkeiernest@gmail.com</h1>
+
+    <div class="info-grid">
+      <section class="info-card">
+        <h2>About</h2>
+        <p>
+          To combat web crawling by AI or copy pasting to AI prompt, I have developed this program to add poison text to add confusion. This can be used to protect work of text from being taken as training data. The idea is inspired by Jason Gibson history professor at Alcorn State University in Mississippi adding white text into the test. The difference of this program is that the text will be overlapped potentially making it harder to spot. Instead of adding white text on some empty line, this program will put the poison text directly behind the legit text making it more difficult to spot. By making the background color the same as the poison text, one can only see the legit text. In addition, to combat copy and pasting the program will interfere and change the copied text based on either the replacement rule or the poison. Note:  This is just a showcase. For the copy and paste prevention work one will need the algorithm to generate the overlapping effect in the display as well as the copy paste poison function. To use it immediately, one can choose to download the png image of the generated text and publish the image instead. When the suppose AI try to read the text from the image, it will either be unreadable or the overlapping cause it to read the poison text.
+        </p>
+      </section>
+
+      
+    </div>
+
     <div id="main">
       <section id="form">
         <form id="textToBeGenerated">
@@ -37,10 +55,10 @@
 
 
           <label for="mainTextSize">Main text size　メインのサイズ: </label>
-          <input type="number" id="mainTextSize" value="34" min="34" max="90" />
+          <input type="number" id="mainTextSize" value="14" min="12" max="90" />
 
           <label for="poisonTextSize">Poison text size　毒のサイズ: </label>
-          <input type="number" id="poisonTextSize" value="12" min="12" max="90"  />
+          <input type="number" id="poisonTextSize" value="30" min="12" max="90"  />
 
           <label for="mainTextColor">Main text color　メインの色: 
             <small class="instruction">Font color for the main メインの字の色</small>

@@ -1,3 +1,9 @@
+
+/**
+ * @author Hon Kei Ernest Chan   chanhonkeiernest@gmail.com
+ * @copyright 2026 Hon Kei Ernest Chan 
+ */
+
 body {
   
   
@@ -7,6 +13,21 @@ body {
   color: #172033;
   font-family: Arial;
 }
+
+
+
+.info-card {
+  background: rgba(255, 255, 255, 0);
+  
+  border-radius: 16px;
+  text-align: center;
+  
+
+}
+
+
+
+
 
 #main {
   width: min(100%, 960px);
@@ -26,7 +47,7 @@ form {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 14px;
-  border: 1px solid #e5e7eb;
+  
 }
 
 form input,
@@ -34,7 +55,7 @@ form button {
   width: 100%;
   min-height: 44px;
   box-sizing: border-box;
-  border: 1px solid #d5dbe7;
+  
   border-radius: 9px;
   padding: 10px 12px;
   
@@ -45,9 +66,9 @@ h1{
 label .instruction {
   display: block;
   margin-top: 4px;
-  color: #526078;
+  color: #565d68;
   font-size: 0.85rem;
-  font-weight: normal;
+ 
 }
 
 form button {

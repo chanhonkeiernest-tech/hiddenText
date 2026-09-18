@@ -1,7 +1,7 @@
-// The browser provides Image and canvas APIs directly.
-//const fs = require('fs');
-//const path = require('path');
-
+/**
+ * @author Hon Kei Ernest Chan   chanhonkeiernest@gmail.com
+ * @copyright 2026 Hon Kei Ernest Chan 
+ */
 let overColor = '#ff0000';
 let outColorTop = '#050505';
 let outColorBottom = '#ffffff';
