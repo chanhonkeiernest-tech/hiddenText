@@ -192,23 +192,6 @@ async function drawAndSave(front, back, main, poison, frontColor, backColor) {
 
 }
 
-const text = `Technology has become essential to our everyday life. As a person who sees its impact and the security issues within, it motivates me to work in Fujitsu to better protect such essential technology. Fujitsu's role in keeping the world connected also resonates with my vision of technology being a great tool for human connection. My knowledge in computer networks, IT support, software project development, program testing, resolving bugs and cyber security allows me to handle most IT-related issues and resolve them in a timely manner. Combined with my strong analytical thinking skills, I hope to serve as a great asset as a Desktop Engineer.
-
-With my experience in testing systems for university project assignments, I developed a strong understanding of software systems and developed secure software. During a school project, the team had to create a chat web application for counseling mental health. Since it involved sensitive information about a person, security was a top priority. To ensure it, we conducted a penetration test to look for potential vulnerabilities such as SQL injection. We also set up preventive measures to deter potential abuse by replacing specific characters. With all that, we prevented unauthorized extraction of confidential information and deterred most malicious action.
-
-As a graduate, I am still eager to contribute and learn more about the ever-changing technology environment. My technology skills, critical thinking, and motivation to learn will be a great asset in supporting your company's day-to-day operations. I look forward to meeting with you for further discussion on how I will be able to contribute to the team. I am grateful for the opportunity and the time you provided to review my application.
-
-Yours sincerely,
-
-Ernest Chan`;
-
-const text2 = `Collaborated with Sales and Product Development teams on research and design of new lighting products to meet market demand.
-Conducted quality control and product testing, maintaining high satisfaction rates and minimizing defects.
-Assisted in  resolving network and software related issue 
-Maintained overall infrastructure for day to day operation and developed needed technology tools
-Provided technical assistance on Windows-based systems, business systems and networking issues within the company.
-Manage technology related asset and record tools condition.
-`;
 
 
 const replacement = "";

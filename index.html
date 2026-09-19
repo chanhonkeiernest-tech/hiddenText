@@ -99,27 +99,27 @@
       
     </div>
     <script type="module" src="draw.js">
-      const paras = document.querySelectorAll('.sync');
+      // const paras = document.querySelectorAll('.sync');
 
-        // 1. VISUAL HIGHLIGHT: Add custom class on mouse down or text selection
-       document.addEventListener('selectionchange', () => {
-            const selection = window.getSelection();
-            const selectedText = selection.toString().trim();
+      //   // 1. VISUAL HIGHLIGHT: Add custom class on mouse down or text selection
+      //  document.addEventListener('selectionchange', () => {
+      //       const selection = window.getSelection();
+      //       const selectedText = selection.toString().trim();
 
-            if (selectedText.length > 0) {
-                // Check if the selection started inside one of our target paragraphs
-                const anchorParent = selection.anchorNode.parentElement;
+      //       if (selectedText.length > 0) {
+      //           // Check if the selection started inside one of our target paragraphs
+      //           const anchorParent = selection.anchorNode.parentElement;
                 
-                if (anchorParent && anchorParent.classList.contains('sync-text')) {
-                    // Highlight both paragraphs visually
-                    paras.forEach(p => p.classList.add('sync-highlight'));
-                    return;
-                }
-            }
+      //           if (anchorParent && anchorParent.classList.contains('sync-text')) {
+      //               // Highlight both paragraphs visually
+      //               paras.forEach(p => p.classList.add('sync-highlight'));
+      //               return;
+      //           }
+      //       }
             
-            // Remove highlight if selection is cleared or outside target paragraphs
-            paras.forEach(p => p.classList.remove('sync-highlight'));
-        });
+      //       // Remove highlight if selection is cleared or outside target paragraphs
+      //       paras.forEach(p => p.classList.remove('sync-highlight'));
+      //   });
 
        
         
