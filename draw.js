@@ -66,7 +66,7 @@ document.addEventListener('copy', (event) => {
         ];
         event.clipboardData.setData(
             'text/plain',
-            paragraphs.join('')
+            paragraphs.join(' ')
         );
     }
     
